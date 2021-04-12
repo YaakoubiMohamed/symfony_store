@@ -1,0 +1,11 @@
+{% extends 'layouts/master.html.twig' %}
+
+{% block title %}New Personne{% endblock %}
+
+{% block content %}
+    <h1>Create new Personne</h1>
+
+    {{ include('vendeur/_form.html.twig') }}
+
+    <a href="{{ path('vendeur_index') }}">back to list</a>
+{% endblock %}

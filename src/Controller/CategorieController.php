@@ -34,7 +34,13 @@ class CategorieController extends AbstractController
         $form = $this->createForm(CategorieType::class, $categorie);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+
+        if ($request->isMethod('POST')) {
+            $nom = $request->get('nom');
+            $description = $request->get('description');
+            $categorie->setNom($nom);
+            $categorie->setDescription($description);
+            //dd($categorie);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($categorie);
             $entityManager->flush();
