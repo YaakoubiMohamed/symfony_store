@@ -1,0 +1,47 @@
+{% extends 'layouts/master.html.twig' %}
+
+{% block title %}Personne index{% endblock %}
+
+{% block content %}
+    <h1>Personne index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Telephone</th>
+                <th>Adresse</th>
+                <th>Type</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for personne in personnes %}
+            <tr>
+                <td>{{ personne.id }}</td>
+                <td>{{ personne.nom }}</td>
+                <td>{{ personne.prenom }}</td>
+                <td>{{ personne.email }}</td>
+                <td>{{ personne.password }}</td>
+                <td>{{ personne.telephone }}</td>
+                <td>{{ personne.adresse }}</td>
+                <td>{{ personne.type }}</td>
+                <td>
+                    <a href="{{ path('vendeur_show', {'id': personne.id}) }}">show</a>
+                    <a href="{{ path('vendeur_edit', {'id': personne.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('vendeur_new') }}">Create new</a>
+{% endblock %}

@@ -1,4 +1,32 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+
+<form action="{{path('produit_new')}}" method="post" enctype="multipart/form-data">
+    <div class="form-group mb-3">
+        <input type="text" name="nom" class="form-control" id="sEmail" aria-describedby="emailHelp1" placeholder="nom">
+    </div>
+    <div class="form-group mb-3">
+        <input type="number" name="quantite" class="form-control" id="sEmail" aria-describedby="emailHelp1" placeholder="quantite">
+    </div>
+    <div class="form-group mb-3">
+        <input type="text" name="couleur" class="form-control" id="sEmail" aria-describedby="emailHelp1" placeholder="couleur">
+    </div>
+    <div class="form-group mb-3">
+        <input type="number" name="prix" class="form-control" id="sEmail" aria-describedby="emailHelp1" placeholder="prix">
+    </div>
+    <div class="form-group mb-3">
+        <input type="text" name="marque" class="form-control" id="sEmail" aria-describedby="emailHelp1" placeholder="marque">
+    </div>
+    <div class="form-group mb-3">
+        <input type="file" name="image" class="form-control" id="sEmail" aria-describedby="emailHelp1" placeholder="image">
+    </div>
+    <div class="form-group mb-4">
+        <textarea name="description" class="form-control"></textarea>
+    </div>
+    <div class="form-group mb-3">
+        <select name="categorie">
+        {% for categorie in categories %}
+            <option value="{{categorie.id}}">{{categorie.nom}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+</form>
